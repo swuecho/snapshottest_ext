@@ -8,7 +8,7 @@ HERE = pathlib.Path(__file__).parent
 README = (HERE / "README.md").read_text()
 
 setup(
-    name="snapshotest-ext",
+    name="snapshottest_ext",
     version="0.1.0",
     description="extra formatter for snapshottest",
     long_description=README,
