@@ -1,4 +1,4 @@
-FROM python:3.7.2
+FROM python:3.7.2-slim
 WORKDIR /app
 RUN pip install --upgrade pip
 ADD ./requirements.txt /app/requirements.txt
