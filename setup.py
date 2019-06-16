@@ -9,7 +9,7 @@ README = (HERE / "README.md").read_text()
 
 setup(
     name="snapshottest_ext",
-    version="0.2.0",
+    version="0.3.0",
     description="extra formatter for snapshottest",
     long_description=README,
     long_description_content_type="text/markdown",
