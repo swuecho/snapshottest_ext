@@ -9,7 +9,7 @@ README = (HERE / "README.md").read_text()
 
 setup(
     name="snapshottest_ext",
-    version="0.3.0",
+    version="0.4.0",
     description="extra formatter for snapshottest",
     long_description=README,
     long_description_content_type="text/markdown",
@@ -22,7 +22,7 @@ setup(
         "Programming Language :: Python :: 3",
         "Programming Language :: Python :: 3.7",
     ],
-    packages=find_packages(exclude=("tests",)),
+    packages=['snapshottest_ext'],
     include_package_data=True,
     install_requires=["snapshottest"],
 )
