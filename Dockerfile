@@ -5,5 +5,5 @@ ADD ./requirements.txt /app/requirements.txt
 RUN pip3 install -r requirements.txt
 
 ENV PYTHONPATH=snapshottest_ext
-RUN ["pytest", "tests", '-vv' "--junitxml=junit/test_results.xml"]
+RUN ["python", "-m pytest", "tests", '-vv' "--junitxml=junit/test_results.xml"]
 
