@@ -1,27 +1,23 @@
 """
-store pandas as msgpack
+store pandas as pyarrow
 """
 
-from io import BytesIO
-
 import pandas as pd
+import pyarrow as pa
 from snapshottest.formatter import Formatter
 from snapshottest.formatters import BaseFormatter
 
 
 def pandas_to_bytes(df: pd.DataFrame) -> str:
-    output = BytesIO()
-    df.to_msgpack(output)
-    json_str = output.getvalue()
-    output.close()
-    return json_str
+    context = pa.default_serialization_context()
+    df_bytestring = context.serialize(df).to_buffer().to_pybytes()
+    return df_bytestring
 
 
 def bytes_to_pandas(raw_bytes) -> pd.DataFrame:
-    in_fh = BytesIO(raw_bytes)
-    df = pd.read_msgpack(in_fh)
-    in_fh.close()
-    return df
+    context = pa.default_serialization_context()
+    original_df = context.deserialize(raw_bytes)
+    return original_df
 
 
 class PandasSnapshot(object):
@@ -49,7 +45,7 @@ class PandasFormatter(BaseFormatter):
             formatter = Formatter.get_formatter(data)
             data = formatter.store(self, data)
             self.module[self.test_name] = data
-            
+
         def assert_match(self, value, name=''):
             self.curr_snapshot = name or self.snapshot_counter
             self.visit()
@@ -69,9 +65,9 @@ class PandasFormatter(BaseFormatter):
 
     """
 
-    def store(self, formatter, value: PandasSnapshot):
+    def store(self, formatter, pandas_snap: PandasSnapshot):
         """ store pd.DataFrame as bytes in snapshot file"""
-        return pandas_to_bytes(value.value)
+        return pandas_to_bytes(pandas_snap.value)
 
     #def get_imports(self):
     #    """not useful in this one, because we do not deserialize from the bytes directly"""
