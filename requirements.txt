@@ -1,4 +1,4 @@
 pandas==0.24.2
 pytest==4.5.0
 pyarrow==0.16.0
-git+git://github.com/syrusakbary/snapshottest.git@master#egg=snapshottest
+git+git://github.com/syrusakbary/snapshottest.git@8c3e10c#egg=snapshottest
