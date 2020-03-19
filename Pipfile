@@ -7,7 +7,7 @@ name = "pypi"
 
 [packages]
 
-pandas = "==1.0.1"
+pandas = "==1.0.3"
 pytest = "==4.5.0"
 pyarrow = "==0.16.0"
 snapshottest = {git = "git://github.com/syrusakbary/snapshottest.git", ref = "master"}
