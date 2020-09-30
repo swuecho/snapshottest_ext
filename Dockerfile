@@ -3,7 +3,9 @@ WORKDIR /app
 RUN pip install --upgrade pip wheel
 ADD ./requirements.txt /app/requirements.txt
 RUN pip3 install -r requirements.txt
-COPY ./snapshottest_ext /app
+COPY ./ /app/
 ENV PYTHONPATH=/app
-RUN pytest test -vv --junitxml=junit/test_results.xml
+RUN ls -la
+RUN pip install -e .
+RUN pytest snapshottest_ext/test -vv --junitxml=junit/test_results.xml
 
