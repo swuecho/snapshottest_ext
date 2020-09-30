@@ -40,31 +40,6 @@ class PandasFormatter(BaseFormatter):
         """
         return isinstance(value, PandasSnapshot)
 
-    """
-        def store(self, data):
-            formatter = Formatter.get_formatter(data)
-            data = formatter.store(self, data)
-            self.module[self.test_name] = data
-
-        def assert_match(self, value, name=''):
-            self.curr_snapshot = name or self.snapshot_counter
-            self.visit()
-            if self.update:
-                self.store(value)
-            else:
-                try:
-                    prev_snapshot = self.module[self.test_name]
-                except SnapshotNotFound:
-                    self.store(value)  # first time this test has been seen
-                else:
-                    try:
-                        self.assert_value_matches_snapshot(value, prev_snapshot)
-                    except AssertionError:
-                        self.fail()
-                        raise
-
-    """
-
     def store(self, formatter, pandas_snap: PandasSnapshot):
         """ store pd.DataFrame as bytes in snapshot file"""
         return pandas_to_bytes(pandas_snap.value)
@@ -73,7 +48,7 @@ class PandasFormatter(BaseFormatter):
     #    """not useful in this one, because we do not deserialize from the bytes directly"""
     #    return ('pandasFormatter', 'PandasSnapshot'),
 
-    def assert_value_matches_snapshot(self, test, test_value: PandasSnapshot, snapshot_value):
+    def assert_value_matches_snapshot(self, test, test_value: PandasSnapshot, snapshot_value, formatter):
         """
         :param test:
         :param test_value: the value in snapshot.assert_mach(value)

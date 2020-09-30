@@ -1,5 +1,5 @@
 import pandas as pd
-from dataframe import PandasSnapshot
+from snapshottest_ext.dataframe import PandasSnapshot
 
 
 def test_format(snapshot):
