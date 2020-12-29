@@ -7,7 +7,7 @@ name = "pypi"
 
 [packages]
 
-pandas = "==1.0.1"
+pandas = "==1.2.0"
 pytest = "==4.5.0"
 pyarrow = "==1.0.1"
 
