@@ -9,7 +9,7 @@ name = "pypi"
 
 pandas = "==1.2.2"
 pytest = "==4.5.0"
-pyarrow = "==1.0.1"
+pyarrow = "==3.0.0"
 
 
 [dev-packages]
