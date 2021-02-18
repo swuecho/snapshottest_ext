@@ -7,7 +7,8 @@ extra formatter for snapshottest
 ```python
 # use with pytest
 import pandas as pd
-from dataframe import PandasSnapshot
+from snapshottest_ext.dataframe  import PandasSnapshot
+
 def test_format(snapshot):
     df = pd.DataFrame([['a', 'b'], ['c', 'd']],
                       columns=['col 1', 'col 2'])
