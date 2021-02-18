@@ -9,14 +9,12 @@ from snapshottest.formatters import BaseFormatter
 
 
 def pandas_to_bytes(df: pd.DataFrame) -> str:
-    context = pa.default_serialization_context()
-    df_bytestring = context.serialize(df).to_buffer().to_pybytes()
+    df_bytestring = pa.serialize(df).to_buffer().to_pybytes()
     return df_bytestring
 
 
 def bytes_to_pandas(raw_bytes) -> pd.DataFrame:
-    context = pa.default_serialization_context()
-    original_df = context.deserialize(raw_bytes)
+    original_df = pa.deserialize(raw_bytes)
     return original_df
 
 
