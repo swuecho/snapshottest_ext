@@ -3,18 +3,18 @@ store pandas as pyarrow
 """
 
 import pandas as pd
-import pyarrow as pa
+import pickle
 from snapshottest.formatter import Formatter
 from snapshottest.formatters import BaseFormatter
 
 
 def pandas_to_bytes(df: pd.DataFrame) -> str:
-    df_bytestring = pa.serialize(df).to_buffer().to_pybytes()
+    df_bytestring = pickle.dumps(df)
     return df_bytestring
 
 
 def bytes_to_pandas(raw_bytes) -> pd.DataFrame:
-    original_df = pa.deserialize(raw_bytes)
+    original_df = pickle.loads(raw_bytes)
     return original_df
 
 
