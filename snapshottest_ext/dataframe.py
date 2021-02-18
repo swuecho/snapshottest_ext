@@ -1,7 +1,3 @@
-"""
-store pandas as pyarrow
-"""
-
 import pandas as pd
 import pickle
 from snapshottest.formatter import Formatter
