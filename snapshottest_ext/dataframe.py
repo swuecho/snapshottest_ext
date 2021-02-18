@@ -1,16 +1,16 @@
 import pandas as pd
-import pickle
+import pyarrow as pa
 from snapshottest.formatter import Formatter
 from snapshottest.formatters import BaseFormatter
 
 
 def pandas_to_bytes(df: pd.DataFrame) -> str:
-    df_bytestring = pickle.dumps(df)
+    df_bytestring = pa.serialize(df).to_buffer().to_pybytes()
     return df_bytestring
 
 
 def bytes_to_pandas(raw_bytes) -> pd.DataFrame:
-    original_df = pickle.loads(raw_bytes)
+    original_df = pa.deserialize(raw_bytes)
     return original_df
 
 
