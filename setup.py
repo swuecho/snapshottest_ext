@@ -11,7 +11,7 @@ setup(
     description="extra formatter for snapshottest",
     long_description=README,
     long_description_content_type="text/markdown",
-    url="https://github.com/swuecho/snapshotest_ext",
+    url="https://github.com/swuecho/snapshottest_ext",
     author="Hao Wu",
     author_email="echowuaho@foxmail.com",
     license="MIT",
