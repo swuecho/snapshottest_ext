@@ -22,5 +22,5 @@ setup(
     ],
     packages=['snapshottest_ext'],
     include_package_data=True,
-    install_requires=["snapshottest", "pandas"],
+    install_requires=["snapshottest", "pandas", "pyarrow"],
 )
